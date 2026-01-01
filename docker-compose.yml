@@ -1,0 +1,12 @@
+services:
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: testme-api-tests:latest
+    network_mode: host
+    environment:
+      - UV_NO_CACHE=1
+    env_file:
+      - .env
+

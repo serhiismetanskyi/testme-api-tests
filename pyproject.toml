@@ -1,0 +1,81 @@
+[project]
+name = "testme-api-tests"
+version = "0.1.0"
+description = "API tests for TestMe API using Playwright"
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+authors = [
+    { name = "Serhii Smetanskyi", email = "mail@serhiismetanskyi.cv" },
+]
+dependencies = [
+    "playwright>=1.48.0",
+    "pytest>=8.3.0",
+    "pytest-playwright>=0.6.0",
+    "pytest-xdist>=3.6.0",
+    "pytest-html>=4.1.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.6.0",
+    "faker>=33.0.0",
+    "python-dotenv>=1.0.0",
+    "ruff>=0.14.6",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--tb=short",
+]
+markers = [
+    "smoke: Quick smoke tests",
+    "regression: Full regression suite",
+    "auth: Authentication tests",
+    "tests: Test case management tests",
+    "stats: Statistics tests",
+    "positive: Positive test scenarios",
+    "negative: Negative test scenarios",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+
+exclude = [
+    ".git",
+    "__pycache__",
+    ".venv",
+    "venv",
+    "build",
+    "dist",
+    "*.egg-info",
+    "reports",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "N",   # pep8-naming
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+]
+
+ignore = [
+    "E501",  # line too long (handled by formatter)
+    "B008",  # function calls in argument defaults
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
