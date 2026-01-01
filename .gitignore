@@ -44,7 +44,7 @@ allure-report/
 
 # Environment
 .env
-!.env.sample
+!.env.example
 
 # Logs
 *.log
